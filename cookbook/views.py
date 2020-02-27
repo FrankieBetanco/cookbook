@@ -6,7 +6,6 @@ from cookbook.models import Contributor, RecipeType, Recipe
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
-from django.core.mail import mail_admins
 
 # Create your views here.
 def index(request): 
@@ -136,8 +135,6 @@ def create_user(request):
             username = form.cleaned_data['username']
             user = User.objects.create_user(username, first_name=first, 
                     last_name=last, password=password)
-            mail_admins("Cookbook - New User Created", 
-                    f"New user {first} {last} has been created")
             user = authenticate(username=username, password=password)
             if user is not None: 
                 login(request, user)
