@@ -1,0 +1,45 @@
+{% extends "cookbook/base.html" %}
+{% block title %}Browse Recipes{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <h2>Recipes List</h2>
+  <p>The table is searchable by recipe name, author, and type</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>Author</th>
+        <th>Type</th>
+        <th>Recipe Link</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+      {% for recipe in recipes %} 
+      <tr>
+        <td> {{ recipe.name }} </td>
+        <td> {{ recipe.author }} </td>
+        <td> {{ recipe.type }} </td>
+        <td> <a href="{% url 'cookbook:display_recipe' recipe.id %}">view</a>
+          | <a href="{% url 'cookbook:edit_recipe' recipe.id %}">edit</a>
+        </td>
+
+      </tr> 
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+{% endblock content %}

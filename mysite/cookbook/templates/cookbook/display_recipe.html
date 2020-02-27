@@ -1,0 +1,20 @@
+{% extends "cookbook/base.html" %}
+{% block title %}{{ recipe.name }}{% endblock title %}
+{% block content %}
+<div class="container">
+  <div class="well">
+  <h1> {{ recipe.name }} <small>by {{ recipe.author }} </small> </h1>
+  <p> {{ recipe.comment }}</p>
+  <h3> Ingredients: </h3>
+      <div>
+        <ul class="columns" data-columns="2">
+          {% for ingredient in ingredients %}
+            <li> {{ ingredient }} </li>
+          {% endfor %}
+        </ul>
+      </div>
+  <h3> Instructions: </h3>
+  <p> {{ recipe.instructions }} </p>
+  </div>
+</div>
+{% endblock content %}

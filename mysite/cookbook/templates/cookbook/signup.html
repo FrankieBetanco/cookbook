@@ -1,0 +1,18 @@
+{% extends "cookbook/base.html" %}
+{% block title%}Sign up{% endblock title %}
+
+{% block content %}  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+    <div class="well">
+    <form action="{% url 'cookbook:create_user' %}" id="create_user" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Sign up" class='btn btn-primary'>
+    </form>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
