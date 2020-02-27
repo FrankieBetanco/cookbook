@@ -12,9 +12,16 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+ADMINS = [('Frankie', 'frankie.betanco@gmail.com')]
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = os.environ['DJANGO_EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['DJANGO_EMAIL_HOST_PASSWORD']
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -25,7 +32,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG'] 
 
-ALLOWED_HOSTS = ['limitless-lake-60369.herokuapp.com']
+ALLOWED_HOSTS = ['limitless-lake-60369.herokuapp.com', 'localhost']
 
 
 # Application definition
