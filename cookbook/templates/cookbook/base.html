@@ -21,10 +21,27 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {% if user.is_authenticated %}
-      <li><a href="{% url 'cookbook:logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li>
+        <span class="navbar-text"> 
+          Currently logged in as {{ user.username}} 
+        </span>
+      </li>
+      <li>
+        <a href="{% url 'cookbook:logout' %}"><span class="glyphicon glyphicon-log-in">
+          </span> Logout
+        </a>
+      </li>
       {% else %}
-      <li><a href="{% url 'cookbook:create_user' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="{% url 'cookbook:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li>
+        <a href="{% url 'cookbook:create_user' %}">
+          <span class="glyphicon glyphicon-user"></span> Sign Up
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'cookbook:login' %}">
+          <span class="glyphicon glyphicon-log-in"></span> Login
+        </a>
+      </li>
       {% endif %}
     </ul>
   </div>

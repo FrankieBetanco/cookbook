@@ -120,7 +120,7 @@ def display_recipe(request, recipe_id):
 
 def browse_recipes(request):
     try:
-        recipes = Recipe.objects.all()
+        recipes = Recipe.objects.all().order_by('name')
     except: 
         raise Http404("Oops")
     return render(request, 'cookbook/browse_recipes.html', {'recipes':recipes})
